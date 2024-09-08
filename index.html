@@ -26,6 +26,9 @@
     <option value="cylindrical_to_cartesian3d">Цилиндрические -> Декартовы (3D)</option>
   </select>
 
+  <label for="precision">Точность (знаков после запятой):</label>
+  <input type="number" id="precision" min="0" value="2">
+
   <div id="coordinates">
   </div>
 
@@ -36,6 +39,7 @@
 
   <script>
     const conversionTypeSelect = document.getElementById('conversionType');
+    const precisionInput = document.getElementById('precision');
     const coordinatesDiv = document.getElementById('coordinates');
     const resultDiv = document.getElementById('result');
 
@@ -45,7 +49,7 @@
       const conversionType = conversionTypeSelect.value;
       let numCoordinates;
 
-      if (conversionType === 'cartesian2d_to_polar' || 
+      if (conversionType === 'cartesian2d_to_polar' ||
           conversionType === 'polar_to_cartesian2d') {
         numCoordinates = 2;
       } else {
@@ -68,6 +72,7 @@
 
     function convert() {
       const conversionType = conversionTypeSelect.value;
+      const precision = parseInt(precisionInput.value);
 
       let x, y, z, r, theta, phi;
 
@@ -90,7 +95,7 @@
 
         r = Math.sqrt(x * x + y * y + z * z);
         theta = Math.acos(z / r);
-        phi = Math.atan2(y, x); 
+        phi = Math.atan2(y, x);
       } else if (conversionType === 'spherical_to_cartesian3d') {
         r = parseFloat(document.getElementById('coord1').value);
         theta = parseFloat(document.getElementById('coord2').value) * Math.PI / 180;
@@ -118,37 +123,37 @@
       resultDiv.innerHTML = '';
       if (conversionType === 'cartesian2d_to_polar') {
         resultDiv.innerHTML = `
-          <p>r: ${r.toFixed(2)}</p>
-          <p>θ: ${(theta * 180 / Math.PI).toFixed(2)}°</p>
+          <p>r: ${r.toFixed(precision)}</p>
+          <p>θ: ${(theta * 180 / Math.PI).toFixed(precision)}°</p>
         `;
       } else if (conversionType === 'polar_to_cartesian2d') {
         resultDiv.innerHTML = `
-          <p>x: ${x.toFixed(2)}</p>
-          <p>y: ${y.toFixed(2)}</p>
+          <p>x: ${x.toFixed(precision)}</p>
+          <p>y: ${y.toFixed(precision)}</p>
         `;
       } else if (conversionType === 'cartesian3d_to_spherical') {
         resultDiv.innerHTML = `
-          <p>r: ${r.toFixed(2)}</p>
-          <p>θ: ${(theta * 180 / Math.PI).toFixed(2)}°</p>
-          <p>φ: ${(phi * 180 / Math.PI).toFixed(2)}°</p>
+          <p>r: ${r.toFixed(precision)}</p>
+          <p>θ: ${(theta * 180 / Math.PI).toFixed(precision)}°</p>
+          <p>φ: ${(phi * 180 / Math.PI).toFixed(precision)}°</p>
         `;
       } else if (conversionType === 'spherical_to_cartesian3d') {
         resultDiv.innerHTML = `
-          <p>x: ${x.toFixed(2)}</p>
-          <p>y: ${y.toFixed(2)}</p>
-          <p>z: ${z.toFixed(2)}</p>
+          <p>x: ${x.toFixed(precision)}</p>
+          <p>y: ${y.toFixed(precision)}</p>
+          <p>z: ${z.toFixed(precision)}</p>
         `;
       } else if (conversionType === 'cartesian3d_to_cylindrical') {
         resultDiv.innerHTML = `
-          <p>r: ${r.toFixed(2)}</p>
-          <p>θ: ${(theta * 180 / Math.PI).toFixed(2)}°</p>
-          <p>z: ${z.toFixed(2)}</p>
+          <p>r: ${r.toFixed(precision)}</p>
+          <p>θ: ${(theta * 180 / Math.PI).toFixed(precision)}°</p>
+          <p>z: ${z.toFixed(precision)}</p>
         `;
       } else if (conversionType === 'cylindrical_to_cartesian3d') {
         resultDiv.innerHTML = `
-          <p>x: ${x.toFixed(2)}</p>
-          <p>y: ${y.toFixed(2)}</p>
-          <p>z: ${z.toFixed(2)}</p>
+          <p>x: ${x.toFixed(precision)}</p>
+          <p>y: ${y.toFixed(precision)}</p>
+          <p>z: ${z.toFixed(precision)}</p>
         `;
       }
     }
