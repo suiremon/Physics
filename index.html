@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Сумма чисел</title>
+  <title>Декартова в Сферическую</title>
 </head>
 <body>
-  <h1>Калькулятор суммирования</h1>
+  <h1>Преобразование Декартовых координат в Сферические</h1>
 
-  <label for="num1">Число 1:</label>
-  <input type="number" id="num1" value="0">
+  <label for="x">x:</label>
+  <input type="number" id="x" value="0">
 
-  <label for="num2">Число 2:</label>
-  <input type="number" id="num2" value="0">
+  <label for="y">y:</label>
+  <input type="number" id="y" value="0">
 
-  <button onclick="sumNumbers()">Сложить</button>
+  <label for="z">z:</label>
+  <input type="number" id="z" value="0">
 
-  <p id="result"></p>
+  <button onclick="convert()">Преобразовать</button>
+
+  <h2>Сферические координаты:</h2>
+  <p>r: <span id="r"></span></p>
+  <p>θ: <span id="theta"></span></p>
+  <p>φ: <span id="phi"></span></p>
 
   <script>
-    function sumNumbers() {
-      let num1 = parseInt(document.getElementById("num1").value);
-      let num2 = parseInt(document.getElementById("num2").value);
-      let sum = num1 + num2;
-      document.getElementById("result").textContent = `Сумма: ${sum}`;
+    function convert() {
+      let x = parseFloat(document.getElementById("x").value);
+      let y = parseFloat(document.getElementById("y").value);
+      let z = parseFloat(document.getElementById("z").value);
+
+      // Вычисление сферических координат
+      let r = Math.sqrt(x * x + y * y + z * z);
+      let theta = Math.acos(z / r);
+      let phi = Math.atan2(y, x);
+
+      // Отображение результатов
+      document.getElementById("r").textContent = r.toFixed(2);
+      document.getElementById("theta").textContent = (theta * 180 / Math.PI).toFixed(2) + "°";
+      document.getElementById("phi").textContent = (phi * 180 / Math.PI).toFixed(2) + "°";
     }
   </script>
 </body>
