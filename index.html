@@ -6,19 +6,21 @@
 <body>
   <h1>Преобразование систем координат</h1>
   
-  <br />
-  
+  <br>
   <h2><label for="СК">Выберите изначальную систему координат</label></h2>
   <select name="Система координат" id="1">
     <option disabled>----</option>
     <option value="ДПСК2">Декартова система координат (2 измерения)</option>
+    <option value="ДПСК2">Полярная система координат</option>
     <option value="ДПСК3">Декартова система координат (3 измерения)</option>
     <option value="СфСК">Сферическая система координат</option>
     <option value="ЦСК">Цилиндрическая система координат</option>
   </select>
   <br />
+
   
-  <h2><label for="СК">Выберите изначальную систему координат</label></h2>
+  <br>
+  <h2><label for="СК">Выберите конечную систему координат</label></h2>
   <select id="2">
   <option class="select" value="select">----</option>
   <option class="ДПСК3" value="aa">Сферическая система координат</option>
@@ -31,6 +33,8 @@
   <option class="ЦСК" value="bc">Сферическая система координат</option>
   
 </select>
+  <br />
+
   
   <label for="x">x:</label>
   <input type="number" id="x" value="0">
