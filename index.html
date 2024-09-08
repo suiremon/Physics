@@ -4,7 +4,7 @@
   <title>Декартова в Сферическую</title>
 </head>
 <body>
-  <h1>Преобразование Декартовых координат в Сферические</h1>
+  <h1>Преобразование систем координат</h1>
 
   <label for="x">x:</label>
   <input type="number" id="x" value="0">
@@ -16,7 +16,16 @@
   <input type="number" id="z" value="0">
 
   <button onclick="convert()">Преобразовать</button>
-
+  <label for="pet-select">Choose a pet:</label>
+  
+  <select name="Система координат" id="pet-select">
+    <option value="">Выберите систему координат</option>
+    <option value="ДПСК2">Декартова система координат (2 измерения)</option>
+    <option value="ДПСК3">Декартова система координат (3 измерения)</option>
+    <option value="СфСК">Сферическая система координат</option>
+    <option value="ЦСК">Цилиндрическая система координат</option>
+  </select>
+  
   <h2>Сферические координаты:</h2>
   <p>r: <span id="r"></span></p>
   <p>θ: <span id="theta"></span></p>
